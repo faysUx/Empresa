@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+	<table class="table table-primary">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Prenom</th>
+				<th>Nom</th>
+				<th>telephone</th>
+				<th>Email</th>
+				<th>adresse</th>
+                <th>Poste</th>
+				<th>Salaire</th>
+                <th>Date de naissance</th>
+                <th>Edit</th>
+                <th>Delete</th>
+
+
+                
+			</tr>
+		</thead>
+		<tbody>
+			{% for salarie in salaries %}
+				<tr>
+					<td>{{ salarie.id }}</td>
+					<td>{{ salarie.prenom }}</td>
+					<td>{{ salarie.nom }}</td>
+					<td>{{ salarie.telephone }}</td>
+                    <td>{{ salarie.email}}</td>
+                    <td>{{ salarie.adresse }}</td>
+                    <td>{{ salarie.poste }}</td>
+                    <td>{{ salarie.salaire}}€</td>
+                    <td>{{ salarie.datedenaissance|date('d/m/Y') }}</td>
+					<td>
+					<a href="{{path('edit', {id: salarie.id})}}" class="btn btn-warning">Editer</a>
+					</td>
+					<td>
+					<a onclick="return confirm('voulez-vous supprimer cet employer ?')" href="{{path('delete', {id: salarie.id})}}" class="btn btn-danger">supprimer</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+<a href="{{path('salaries_add') }}" class="btn btn-primary">Ajouter</a>
+{% endblock %}

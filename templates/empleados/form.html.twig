@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>
+{% if editMode %}
+Modification
+{%  else %}
+creation 
+{% endif %}
+</h1>
+<a href="{{path('accueil')}}"><button type="submit" class="btn btn-primary col-12 text-center"> Accueil</button></a>
+
+<div class="container">
+{{ form_start(formSalaries, {
+    attr: {
+        novalidate: 'novalidate'
+    }
+}) }}
+
+{{ form_row(formSalaries.nom) }}
+{{ form_row(formSalaries.prenom) }}
+{{ form_row(formSalaries.telephone) }}
+{{ form_row(formSalaries.email) }}
+{{ form_row(formSalaries.adresse) }}
+{{ form_row(formSalaries.poste) }}
+{{ form_row(formSalaries.salaire) }}
+{{ form_row(formSalaries.datedenaissance) }}
+
+
+
+
+</div>
+<div class="container">
+<button type="submit" class="btn btn-primary col-12 mt-2">
+{% if editMode %}
+les modifications
+{% else %}
+ajouter
+{% endif %}
+</button>
+</div>
+{{ form_end(formSalaries) }}
+{% endblock %}
