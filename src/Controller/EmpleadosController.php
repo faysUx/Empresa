@@ -17,7 +17,7 @@ class EmpleadosController extends AbstractController
     public function index(SalariesRepository $repo): Response
     {   
         $salaries=$repo->findAll();
-        return $this->render('empleados/liste.html.twig', [
+        return $this->render('empleados/index.html.twig', [
             'salaries'=> $salaries
         ]);
     }
